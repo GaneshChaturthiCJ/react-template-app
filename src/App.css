@@ -1,0 +1,149 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.container{
+  width: 800px;
+  min-height: 500px;
+  background-color: white;
+}
+
+.inner-container{
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  padding: 15px;
+  
+}
+
+.card-one{
+  width: 100%;
+  height: 250px;
+  background-color: rgb(255, 255, 255);
+  border: 1px solid black;
+  border-radius: 5px;
+}
+
+.card-two{
+  width: 100%;
+  height: 250px;
+  background-color: rgb(255, 255, 255);
+  border: 1px solid black;
+  border-radius: 5px;
+  margin-top: 7px;
+}
+
+.card-one-inner-container{
+  width: 100%;
+  min-height: 250px;
+  display: flex;
+  position: relative;
+
+}
+.heading{
+  font-family : "Helvetica", Arial, sans-serif;
+}
+
+.image{
+  width: 200px;
+  height: 250px;
+}
+
+.image img{
+  width: 200px;
+  height: 210px;
+  margin-top: 25px;
+}
+
+.product-details{
+ color: black; 
+ margin-left: 25px;
+
+}
+
+.product-details p{
+  line-height: 1;
+  text-align: left;
+}
+.product-details h3{
+  text-align: left;
+  line-height: 0.5;
+}
+
+.options{
+  display: flex;
+}
+
+.price{
+  display: flex;
+}
+
+.selectOpt{
+  all: unset;
+  background-color: rgb(214, 214, 214);
+  padding: 5px;
+  margin: 0 5px;
+  font-weight: 600;
+}
+
+.discount{
+  text-decoration: line-through;
+  opacity: 0.5;
+  margin-left: 10px;
+}
+
+.header{
+  width: 80%;
+  height: 100px;
+  background-color: rgb(255, 255, 255);
+  border-radius: 5px;
+  
+  color: black;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  
+}
+
+.buttons{
+  display: flex;
+
+}
+
+.buttons a{
+  text-decoration: none;
+}
+
+.button-one a, .button-two a{
+  margin-right: 15px;
+  text-decoration: none;
+  color: rgb(114, 114, 113);
+  font-weight: 700;
+}
+
+.button-one{
+  border-right: 1px solid black;
+}
+
+.button-two a{
+  margin-left: 15px;
+  
+}
+
+.select{
+  font-weight: bold;
+  margin-left: 10px;
+}
+
+.cancel{
+  position: absolute;
+  top: 0;
+  right: 0;
+}
