@@ -3,14 +3,86 @@ import { useState } from 'react'
 import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [checkedBoxOne, setCheckBoxOne] = useState(false);
+  const [checkedBoxTwo, setCheckBoxTwo] = useState(false);
+  const [mainCheckBox, setMainCheckBox] = useState(false);
+
+  const [checkedBoxOneCount, setCheckBoxOneCount] = useState(0);
+  const [checkedBoxTwoCount, setCheckBoxTwoCount] = useState(0);
+
+  const handleCheckBoxOneClick = () => {
+    setCheckBoxOne(!checkedBoxOne);
+    if (checkedBoxOne) {
+      setCheckBoxOneCount((p) => p - 1);
+    } else {
+      setCheckBoxOneCount((p) => p + 1);
+    }
+
+    if (checkedBoxTwo) {
+      setMainCheckBox(!mainCheckBox);
+    }
+  };
+
+  const handleCheckBoxTwoClick = () => {
+    setCheckBoxTwo(!checkedBoxTwo);
+    if (checkedBoxTwo) {
+      setCheckBoxTwoCount((p) => p - 1);
+    } else {
+      setCheckBoxTwoCount((p) => p + 1);
+    }
+
+    if (checkedBoxOne) {
+      setMainCheckBox(!mainCheckBox);
+    }
+  };
+
+  const handleMainCheckBoxClick = () => {
+    if (checkedBoxOneCount + checkedBoxTwoCount == 1) {
+      return;
+    }
+    setMainCheckBox(!mainCheckBox);
+    if (mainCheckBox) {
+      setCheckBoxTwoCount((p) => p - 1);
+      setCheckBoxOneCount((p) => p - 1);
+      setCheckBoxOne(!checkedBoxOne);
+      setCheckBoxTwo(!checkedBoxTwo);
+    } else {
+      setCheckBoxTwoCount((p) => p + 1);
+      setCheckBoxOneCount((p) => p + 1);
+      setCheckBoxTwo(!checkedBoxTwo);
+      setCheckBoxOne(!checkedBoxOne);
+    }
+  };
 
   return (
     <>
       <div className="container">
         <div className="header">
           <div className="selected">
-            <div className="select">2/2 ITEMS SELECTED</div>
+            <div className="select">
+              <div className="total-checked">
+                <div>
+                  {mainCheckBox ? (
+                    <div
+                      className="selectBox main-select-box"
+                      onClick={handleMainCheckBoxClick}
+                    >
+                      <img src="./checked-pink.svg" />
+                    </div>
+                  ) : (
+                    <div
+                      className="selectBox main-select-box"
+                      onClick={handleMainCheckBoxClick}
+                    >
+                      <img src="./checked-empty.svg" />
+                    </div>
+                  )}
+                </div>
+                <div className="check-count">
+                  {checkedBoxOneCount + checkedBoxTwoCount}/2 ITEMS SELECTED
+                </div>
+              </div>
+            </div>
           </div>
           <div className="buttons">
             <div className="button-one">
@@ -24,6 +96,16 @@ function App() {
 
         <div className="inner-container">
           <div className="card-one">
+            {checkedBoxOne ? (
+              <div className="selectBox" onClick={handleCheckBoxOneClick}>
+                <img src="./checked-pink.svg" />
+              </div>
+            ) : (
+              <div className="selectBox" onClick={handleCheckBoxOneClick}>
+                <img src="./checked-empty.svg" />
+              </div>
+            )}
+
             <div className="card-one-inner-container">
               <div className="cancel">
                 <img src="./wrong.svg" alt="cancel" />
@@ -60,6 +142,16 @@ function App() {
           </div>
 
           <div className="card-two">
+            {checkedBoxTwo ? (
+              <div className="selectBox" onClick={handleCheckBoxTwoClick}>
+                <img src="./checked-pink.svg" />
+              </div>
+            ) : (
+              <div className="selectBox" onClick={handleCheckBoxTwoClick}>
+                <img src="./checked-empty.svg" />
+              </div>
+            )}
+
             <div className="card-one-inner-container">
               <div className="cancel">
                 <img src="./wrong.svg" alt="cancel" />
